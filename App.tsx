@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
     Building2,
     MapPin,
@@ -43,14 +43,14 @@ const App = () => {
         { title: 'Finalizar', icon: <CheckCircle2 className="w-5 h-5" /> },
     ];
 
-    const handleInputChange = (id, value) => {
+    const handleInputChange = (id: string, value: string) => {
         setFormData(prev => ({ ...prev, [id]: value }));
     };
 
     const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length - 1));
     const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0));
 
-    const RadioOption = ({ id, label, value }) => (
+    const RadioOption = ({ id, label, value }: { id: keyof typeof formData; label: string; value: string }) => (
         <label className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all ${formData[id] === value ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200' : 'border-gray-200 hover:bg-gray-50'}`}>
             <input
                 type="radio"
